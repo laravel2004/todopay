@@ -24,20 +24,8 @@ const Dasboard = () => {
     }
 
     const handleOK = (e) => {
-<<<<<<< HEAD
         contex.setData([...contex.data, list])
         handleSave()
-=======
-        contex.setData([...contex.data, list]);
-        var retrievedObject = localStorage.getItem("data");
-        var json = JSON.parse(retrievedObject);    
-        if (json) {
-            json.push(list);
-            localStorage.setItem('data', JSON.stringify(json));
-        } else {
-            localStorage.setItem('data', JSON.stringify([list]));
-        }
->>>>>>> 6f85a4ea0610223d8c72685e57aa5d2000c28eaf
         setOpen(false)
         setNama('')
     }
