@@ -1,6 +1,6 @@
 import { Button, Col, Row, Card, Modal, Input } from "antd";
 import './../css/dashboard.css'
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import Navbar from './../components/Navbar.js'
 import { PlusOutlined } from "@ant-design/icons/lib/icons";
 import { Link } from "react-router-dom";
@@ -18,8 +18,14 @@ const Dasboard = () => {
         message : []
     }
 
+    const handleSave = () => {
+        localStorage.setItem('data', JSON.stringify(contex.data))
+        localStorage.setItem('index', JSON.stringify(contex.parameter))
+    }
+
     const handleOK = (e) => {
         contex.setData([...contex.data, list])
+        handleSave()
         setOpen(false)
         setNama('')
     }
@@ -35,6 +41,14 @@ const Dasboard = () => {
     }
     const handleDelete = (props) => {
         contex.setData(contex.data.filter(item => item.title.nama !== props))
+        handleSave()
+    }
+
+    const handleIndex = (props) => {
+        if(props == null) {
+            props = 0
+        }
+        contex.setParameter(props)
     }
 
     return(
@@ -86,7 +100,7 @@ const Dasboard = () => {
                                 style={{width : 400, textAlign :'center'}} 
                                 title = "Group Belanjaan" 
                                 hoverable = 'true'>
-                                    <Link to='/detail' state={index}>
+                                    <Link to='/detail' onClick={() => handleIndex(index)}>
                                         <div style={{fontSize : 30, fontWeight : 400, color : 'black'}}>
                                             "{items.title.nama}"
                                         </div>

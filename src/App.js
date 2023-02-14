@@ -2,24 +2,19 @@ import { Route, Routes } from 'react-router-dom';
 import Dasboard from './page/dasboard';
 import Detail from './page/detail';
 import Add from './page/add';
-import { createContext, useCallback, useContext, useEffect, useState } from 'react';
-import { Button } from 'antd';
-
+import { createContext, useEffect, useState } from 'react';
 
 export const RootContex = createContext();
 
 function App() {
-  const [data, setData] = useState([{title : {nama : 'agung'}}])
+  const [data, setData] = useState([])
   const [request, setRequest] = useState([])
   const [parameter, setParameter] = useState('')
 
-  
   useEffect(() => {
-    const storage = JSON.stringify(localStorage.getItem('data'))
-    console.log(storage);
-    localStorage.setItem('data', storage)
-    setData(storage)
-  }, [data])
+    setData(JSON.parse(localStorage.getItem('data')))
+    setParameter(JSON.parse(localStorage.getItem('index')))
+  }, [])
 
   return (
     <RootContex.Provider value={{data,setData, request, setRequest, parameter, setParameter}} >

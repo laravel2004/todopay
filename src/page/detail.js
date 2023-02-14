@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
-import Footerr from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { RootContex } from "../App";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Card, Row, Button } from "antd";
 import Circle from './../assets/circle.png'
 import { PlusOutlined } from "@ant-design/icons/lib/icons";
@@ -12,16 +11,6 @@ const Detail = () => {
     const context = useContext(RootContex);
     const {data} = context
 
-    
-    let param = useLocation().state
-    if(param == null) {
-        param = 0
-    }
-
-    // console.log(message)
-
-    context.setParameter(param)
-    console.log(context.parameter)
 
     const handleDelete = (list) => {
         context.setData(context.data.map(outer => {
@@ -30,6 +19,8 @@ const Detail = () => {
                 message : outer.message.filter(inner => inner.list !== list)
             }
         }))
+        localStorage.setItem('data', JSON.stringify(context.data))
+        localStorage.setItem('index', JSON.stringify(context.parameter))
     }
     return(
         <>
@@ -47,7 +38,7 @@ const Detail = () => {
                                         <span>Quantity</span>
                                         <span>Hapus</span>
                                 </Row>
-                                {data[context.parameter].message[0] ? data[param].message.map((item, index) => 
+                                {data[context.parameter].message[0] ? data[context.parameter].message.map((item, index) => 
                                 <div key={index}>
                                     <Row justify={"space-between"} style = {{marginTop : 10}}>
                                         <span>{item.list}</span>

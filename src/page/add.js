@@ -1,10 +1,9 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { RootContex } from "../App";
-import Footerr from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
-import { Button, Col, Image, Input, Row, Card } from "antd";
+import { Button, Col, Input, Row, Card } from "antd";
 import Pikachu from './../assets/pikachu.jfif'
 
 
@@ -38,8 +37,9 @@ const Add = () => {
             )
         })
         navigate('/')
+        localStorage.setItem('data', JSON.stringify(context.data))
+        localStorage.setItem('index', JSON.stringify(context.parameter))
     }
-
     return(
         <>
             <Navbar />
