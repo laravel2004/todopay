@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+nav {
+    padding: 2rem;
+    position: fixed;
+    z-index: 100;
+}
+
+.onscroll {
+    background-color: #16ABF8;
+    width: 100vw;
+    color: whitesmoke;
+}
+
+.offscroll {
+    background-color: #16ABF8;
+    width: 100vw;
+    color: whitesmoke;
+}
+
+h1 {
+    margin-left: 10rem;
+}

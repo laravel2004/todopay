@@ -1,0 +1,11 @@
+.hero {
+    background-color: #FFFFFF;
+    padding-top: 9rem;
+    padding-bottom: 9rem;
+}
+
+.header {
+    font-size: large;
+    font-weight: 600;
+    color: white;
+}
